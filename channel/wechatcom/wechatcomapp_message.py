@@ -31,6 +31,7 @@ class WechatComAppMessage(ChatMessage):
 
             self._prepare_fn = download_voice
         elif msg.type == "image":
+            logger.info(f"进入到image判断,{msg}")
             self.ctype = ContextType.IMAGE
             self.content = TmpDir().path() + msg.media_id + ".png"  # content直接存临时目录路径
 
