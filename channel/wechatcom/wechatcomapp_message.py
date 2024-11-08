@@ -31,15 +31,15 @@ class WechatComAppMessage(ChatMessage):
 
             self._prepare_fn = download_voice
         elif msg.type == "image":
-            logger.info(f"进入到image判断,{msg}")
             self.ctype = ContextType.IMAGE
             self.content = TmpDir().path() + msg.media_id + ".png"  # content直接存临时目录路径
 
             def download_image():
                 # 如果响应状态码是200，则将响应内容写入本地文件
-                response = client.media.download(msg.media_id)
+                response = client.media.download(msg)
                 if response.status_code == 200:
                     with open(self.content, "wb") as f:
+                        logger.info(f"进入到image判断,{self.content}")
                         f.write(response.content)
                 else:
                     logger.info(f"[wechatcom] Failed to download image file, {response.content}")
