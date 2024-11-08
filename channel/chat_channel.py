@@ -165,11 +165,11 @@ class ChatChannel(Channel):
     def _handle(self, context: Context):
         if context is None or not context.content:
             return
-        logger.debug("[chat_channel] ready to handle context: {}".format(context))
+        logger.info("[chat_channel] ready to handle context: {}".format(context))
         # reply的构建步骤
         reply = self._generate_reply(context)
 
-        logger.debug("[chat_channel] ready to decorate reply: {}".format(reply))
+        logger.info("[chat_channel] ready to decorate reply: {}".format(reply))
 
         # reply的包装步骤
         if reply and reply.content:
