@@ -159,7 +159,7 @@ class Query:
         except (InvalidSignatureException, InvalidCorpIdException):
             raise web.Forbidden()
         msg = parse_message(message)
-        logger.debug("[wechatcom] receive message: {}, msg= {}".format(message, msg))
+        logger.info("[wechatcom] receive message: {}, msg= {}".format(message, msg))
         if msg.type == "event":
             if msg.event == "subscribe":
                 pass
